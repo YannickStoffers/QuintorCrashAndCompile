@@ -1,12 +1,24 @@
-
-
-n = 3
-def binary_business(n):
-  L = []
-  for i in xrange(16):
-      b = bin(i)[2:]
-      l = len(b)
-      b = str(0) * (n - l) + b
-      L.append(b)
-print L
-      
+  
+# Python program to count
+# all distinct binary strings
+# without two consecutive 1's
+ 
+n = 100
+def countStrings(n):
+ 
+    a=[0 for i in range(n)]
+    b=[0 for i in range(n)]
+    a[0] = b[0] = 1
+    for i in range(1,n):
+        a[i] = a[i-1] + b[i-1]
+        b[i] = a[i-1]
+     
+    return a[n-1] + b[n-1]
+ 
+# Driver program to test
+# above functions
+ 
+print(countStrings(n))
+ 
+# This code is contributed
+# by Anant Agarwal.
